@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Listado de notas</h2>
+            <ul class="list-group">
+                <li (click)="viewNote(n)" class="list-group-item" *ngFor="let n of my_notes">{{ n.id }}. {{ n.title }}</li>
+            </ul>
+            <span class="btn btn-primary btn-block" (click)="addNote()">Nueva Nota</span>
+        </div>
+        <div class="col-md-6" *ngIf="show_form">
+            <h2>Nueva Nota</h2>
+            <input class="form-control" type="text" placeholder="Título de la nueva nota" [(ngModel)]="note.title" />
+            <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Cuerpo de la nota" [(ngModel)]="note.description"></textarea>
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="btn btn-danger btn-block" *ngIf="editing" (click)="removeNote()">Eliminar</span>
+                </div>
+                <div class="col-md-4">
+                    <span class="btn btn-default btn-block" (click)="cancel()">Cancelar</span>
+                </div>
+                <div class="col-md-4">
+                    <span class="btn btn-primary btn-block" (click)="createNote()">Guardar Nota</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
